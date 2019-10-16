@@ -152,7 +152,7 @@ if (mysqli_num_rows($result) > 0) {
     <tr>
       <th scope='row'>" . $STT . "</th>
       <td>" . $row["productName"] . "</td> 
-      <td>" . $row["productImage"]   . "</td>
+      <td>        <img src=../" . $row["productImage"]   . " width='50%'/></td>
       <td>" . $row["productPrice"] . "</td>
       <td>" . $row["productSale"] . "</td>
       <td><a class='btn btn-info' href='../../../app/admin/product/update.php?id= " . $row["productID"] . "' onclick='return checkupdate()'>Edit</a></td>

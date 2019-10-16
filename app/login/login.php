@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 require('../common/test_connection.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['username'])) {

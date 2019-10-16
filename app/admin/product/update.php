@@ -113,7 +113,6 @@ function check_input($data)
 </head>
 
 <body>
-
     <body class="theme-red">
         <!-- Page Loader -->
         <div class="page-loader-wrapper">

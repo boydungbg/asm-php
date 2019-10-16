@@ -153,8 +153,8 @@ if (mysqli_num_rows($result) > 0) {
       <td>" . $row["user_lname"] . "</td>
       <td>" . $row["user_email"] . "</td>
       <td>" . $row["user_registerdate"] . "</td>
-      <td><a btn btn-info href='../../../app/admin/user/update.php?id= " . $row["user_id"] . "' onclick='return checkupdate()'>Edit</a></td>
-      <td><a btn btn-danger href='../../../app/admin/user/delete.php?id= " . $row["user_id"] . "' onclick='return checkdelete()'>Delete</a></td>
+      <td><a class='btn btn-info' href='../../../app/admin/user/update.php?id= " . $row["user_id"] . "' onclick='return checkupdate()'>Edit</a></td>
+      <td><a class='btn btn-danger' href='../../../app/admin/user/delete.php?id= " . $row["user_id"] . "' onclick='return checkdelete()'>Delete</a></td>
     </tr>
   </tbody>";  
           }
