@@ -11,7 +11,7 @@ if (file_exists("../" . $productImage)) {
     unlink("../" . $productImage);
     $sql = "update lechidung_product set productImage = '" . $target_getImg . "', productPrice = '" . $_POST['productprice'] . "', productSale = '" . $_POST['productsale'] . "' where productID = " . $_GET["id"];
     if (mysqli_query($conn, $sql) == true) {
-        header("Location: ../../../app/admin/admin.php");
+        header("Location: ../../../app/admin/product/display.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

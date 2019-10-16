@@ -9,9 +9,12 @@ try {
     $query = "INSERT INTO lechidung_product (productName,productImage,productPrice,productSale)";
     $query .= "VALUES(?,?,?,?)";
     $stmt = $conn->prepare($query);
+    if (empty($productSale)) {
+        $productSale = 0;
+    }
     $stmt->bind_param("ssss", $productName, $productImg, $productPrice, $productSale);
     if ($stmt->execute()) {
-        header("Location: ../../../app/admin/admin.php");
+        header("Location: ../../../app/admin/product/display.php");
         exit();
     } else {
         $errorstring = "<p class='text-center col-sm-8' style='color:red'>";

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require('../common/session.php');
 require('../common/test_connection.php');
 $sql = "select * from lechidung_users where user_username = '" . $user_checked . "';";
@@ -12,53 +12,143 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 <?php require '../shares/headerAdmin.php' ?>
-<div class="row">
-    <?php require '../shares/navAdmin.php' ?>
-    <div class="col-9">
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="DashBoard" role="tabpanel" aria-labelledby="v-pills-DashBoard-tab">
-                Nó là trang điều khiển
-            </div>
-            <div class="tab-pane fade" id="Profile" role="tabpanel" aria-labelledby="v-pills-Profile-tab">
-                Nó là trang thông tin admin
-            </div>
-            <div class="tab-pane fade" id="ManangerUser" role="tabpanel" aria-labelledby="v-pills-ManangerUser-tab">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="navbar navbar-expand-lg navbar-dark">
-                            <h5>Manager Users</h5>
-                        </nav>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <?php require './user/display.php' ?>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="ManagerProduct" role="tabpanel" aria-labelledby="v-pills-ManagerProduct-tab">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="navbar navbar-expand-lg navbar-dark">
-                            <h5>Manager Products</h5>
-                            <div class="collapse navbar-collapse " id="navbarNav">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item active">
-                                        <a href="../../app/admin/product/insert.php"><button type="button" class="btn btn-success">Insert Product</button></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <div class="row">
-                            <div class="col-12">
-                                <?php require './product/display.php' ?>
-                            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a id="text-white" href="../../app/admin/admin.php">Admin Shop DungCT</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="../../app/login/logout.php"><button type="button" class="icon-signout btn btn-large btn-primary">Logout</button></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="../../public/img/imgUsers/68378441_662085174278896_6502441750110404608_o.jpg" width="46" height="44" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $login_session ?></div>
+                    <div class="email"><?php echo $login_session1 ?></div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">Menu Control</li>
+                    <li class="active">
+                        <a href="../../app/admin/admin.php">
+                            <i class="icon-home material-icons"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../app/admin/user/display.php">
+                            <i class="icon-user  material-icons"></i>
+                            <span>Manager Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../app/admin/product/display.php">
+                            <i class=" icon-shopping-cart material-icons"></i>
+                            <span>Manager Products</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2016 - 2017 <a href="">Admin Shop DungCT</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0.5
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>DASHBOARD</h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">playlist_add_check</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW TASKS</div>
+                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">help</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW TICKETS</div>
+                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-
+                3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-light-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">forum</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW COMMENTS</div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">person_add</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW VISITORS</div>
+                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<?php require '../shares/footerAdmin.php' ?>
+    <?php require '../shares/footerAdmin.php' ?>

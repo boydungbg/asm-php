@@ -143,7 +143,17 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="products__wrap">
                     <?php
                     require('../common/test_connection.php');
-                    $sql = "select * from lechidung_product;";
+                    $page = 1;
+                    $limit = 16;
+                    $arrs_list = mysqli_query($conn, "select * from lechidung_product;");
+                    $total_record = mysqli_num_rows($arrs_list);
+                    $total_page = ceil($total_record / $limit);
+                    if (isset($_GET["page"]))
+                        $page = $_GET["page"];
+                    if ($page < 1) $page = 1;
+                    if ($page > $total_page) $page = $total_page;
+                    $start = ($page - 1) * $limit;
+                    $sql = "select * from lechidung_product ORDER BY productID DESC limit " . $start . "," . $limit . " ;";
                     $result = mysqli_query($conn, $sql);
                     ?>
                     <?php if (mysqli_num_rows($result) > 0) { ?>
@@ -166,7 +176,7 @@ if (mysqli_num_rows($result) > 0) {
                                     </div>
                                     <span class="product__sale">
                                         <span class="product__sale-final">
-                                            <?php echo  $row["productPrice"] - ($row["productPrice"] * $row["productSale"] / 100) ?>₫
+                                            <?php echo  round($row["productPrice"] - ($row["productPrice"] * $row["productSale"] / 100), 0, PHP_ROUND_HALF_DOWN); ?>₫
                                             <span class="product__sale-percent">
                                                 -<?php echo $row["productSale"] ?>%
                                             </span>
@@ -195,7 +205,18 @@ if (mysqli_num_rows($result) > 0) {
                         <?php } ?>
                     <?php } ?>
                 </div>
-                <div class="pagination">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item"><a class="page-link" href="../../app/user/shopdungct.php?page=<?php echo $page - 1; ?>">Previous</a></li>
+                                <?php for ($i = 1; $i <= $total_page; $i++) { ?>
+                                    <li class="page-item"><a <?php if ($page == $i) echo "class='page-link bg-info text-white'"; ?> class="page-link" href="../../app/user/shopdungct.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php } ?>
+                                <li class="page-item"><a class="page-link" href="../../app/user/shopdungct.php?page=<?php echo $page + 1; ?>">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>

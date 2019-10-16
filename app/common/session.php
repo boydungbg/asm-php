@@ -9,6 +9,7 @@ if (!isset($_SESSION['login_user'])) {
     $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         $login_session = $row['user_fname'] . " " . $row['user_lname'];
+        $login_session1 = $row['user_email'];
         $user_checked = $row['user_username'];
     }
 }
